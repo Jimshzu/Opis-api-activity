@@ -15,3 +15,13 @@
 15. **4. Testing:**
 16. - (Paste a screenshot of a successful GET request here)
 ![alt text](image.png)
+
+## Why did I choose to Embed the Review / Tag / Log?
+
+Since the Review, Tag, and Log are small and dependent components that weren't required to be present in the parent document, so I decided to embed them.
+
+## Why did I choose to Reference the Chef / User / Guest?
+
+Since the Chef, User, and Guest entities have separate records that can exist independently and may be used again in different documents, I decided to make reference to them. Referencing maintains database normalization and prevents data duplication.
+
+
