@@ -10,6 +10,8 @@ const {
   deleteDish,
 } = require('../controllers/dishController');
 
+const {protect, authorize } = require('../middleware/authMiddleware');
+
 
 // 1. If user goes to GET / (Show menu) → Ask Chef to getAllDishes
 router.get('/dishes', getAllDishes);

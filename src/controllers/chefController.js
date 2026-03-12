@@ -1,18 +1,16 @@
 const Chef = require('../models/chefModel');
 
-
-// ✅ GET all chefs
+// GET all chefs
 exports.getAllChefs = async (req, res) => {
     try {
         const chefs = await Chef.find();
-        res.json(chefs);
+        res.status(200).json(chefs);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-
-// ✅ GET one chef
+// GET chef by ID
 exports.getChefById = async (req, res) => {
     try {
         const chef = await Chef.findById(req.params.id);
@@ -21,14 +19,13 @@ exports.getChefById = async (req, res) => {
             return res.status(404).json({ message: "Chef not found" });
         }
 
-        res.json(chef);
+        res.status(200).json(chef);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-
-// ✅ CREATE chef
+// CREATE new chef
 exports.createChef = async (req, res) => {
     try {
         const chef = new Chef(req.body);
@@ -39,28 +36,26 @@ exports.createChef = async (req, res) => {
     }
 };
 
-
-// ✅ UPDATE chef
+// UPDATE chef
 exports.updateChef = async (req, res) => {
     try {
         const updatedChef = await Chef.findByIdAndUpdate(
             req.params.id,
             req.body,
-            { new: true, runValidators: true }
+            { new: true }
         );
 
         if (!updatedChef) {
             return res.status(404).json({ message: "Chef not found" });
         }
 
-        res.json(updatedChef);
+        res.status(200).json(updatedChef);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
-
-// ✅ DELETE chef
+// DELETE chef
 exports.deleteChef = async (req, res) => {
     try {
         const deletedChef = await Chef.findByIdAndDelete(req.params.id);
@@ -69,7 +64,7 @@ exports.deleteChef = async (req, res) => {
             return res.status(404).json({ message: "Chef not found" });
         }
 
-        res.json({ message: "Chef deleted successfully" });
+        res.status(200).json({ message: "Chef deleted successfully" });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

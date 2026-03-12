@@ -25,9 +25,9 @@ const dishSchema = new mongoose.Schema({
   },
   reviews: [
   {
-  user: String,
-  rating: { type: Number, min: 1, max: 5 },
-  comment: String
+    user: String,
+    rating: { type: Number, min: 1, max: 5 },
+    comment: String
   }
     ],
   chef: {
